@@ -1,12 +1,11 @@
 const { pool } = require('../db/db');
-const validator = require('validator');
 
 const ALTERNATIVAS_VALIDAS = ['A', 'B', 'C', 'D', 'E'];
 
 class Questao {
     constructor(data){
-        data = data;
-        error = [];
+        this.data = data;
+        this.errors = [];
     }
 }
 
@@ -24,35 +23,35 @@ Questao.prototype.validate = function () {
 
     // Verificando se os campos estão vazios.
     if (!enunciado) {
-        this.error.push('Enunciado é obrigatório.')
+        this.errors.push('Enunciado é obrigatório.')
     }
 
     if (!alternativaA) {
-        this.error.push('Alternativa A é obrigatória.')
+        this.errors.push('Alternativa A é obrigatória.')
     }
 
     if (!alternativaB) {
-        this.error.push('Alternativa B é obrigatória.')
+        this.errors.push('Alternativa B é obrigatória.')
     }
 
     if (!alternativaC) {
-        this.error.push('Alternativa C é obrigatória.')
+        this.errors.push('Alternativa C é obrigatória.')
     }
 
     if (!alternativaD) {
-        this.error.push('Alternativa D é obrigatória.')
+        this.errors.push('Alternativa D é obrigatória.')
     }
 
     if (!alternativaE) {
-        this.error.push('Alternativa E é obrigatória.')
+        this.errors.push('Alternativa E é obrigatória.')
     }
     // Validando se o dado de correta está entre A a E.
     if (!ALTERNATIVAS_VALIDAS.includes(correta)) {
-        this.error.push('Alternativa correta é deve ser uma letra de A a E.')
+        this.errors.push('Alternativa correta deve ser uma letra de A a E.')
     }
 
     // Se todos os dados foram validados, substitui os dados formatados em data
-    if (this.erros === 0) {
+    if (this.errors === 0) {
         this.data = {
             enunciado,
             alternativaA,
@@ -80,12 +79,12 @@ Questao.prototype.create = function () {
     `;
     const query_params = [
         this.data.enunciado,
-        this.data.alternativa_a,
-        this.data.alternativa_b,
-        this.data.alternativa_c,
-        this.data.alternativa_d,
-        this.data.alternativa_e,
-        this.data.alternativa_correta
+        this.data.alternativaA,
+        this.data.alternativaB,
+        this.data.alternativaC,
+        this.data.alternativaD,
+        this.data.alternativaE,
+        this.data.correta
     ];
 
     return new Promise((resolve, reject) => {
@@ -93,10 +92,29 @@ Questao.prototype.create = function () {
             if (error) {
                 reject('Erro ao inserir questão: ' + error);
             } else {
-                const idDaQuestao
-                resolve
+                const idDaQuestaoSalva = result.rows[0].id;
+                resolve(idDaQuestaoSalva);
             }
-        })
-    })
+        });
+    });
 
-}
+};
+
+Questao.listarQuestoes = function () {
+    return new Promise((resolve, reject) => {
+        const query = `
+        SELECT *
+        FROM questoes 
+        ORDER BY id ASC
+        `
+        pool.query(query, (error, result) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(result.rows);
+            }
+        });
+    });
+};
+
+module.exports = Questao;

@@ -1,0 +1,17 @@
+<nav>
+    <div class="nav-container">
+        <div class="logo">
+            <span class="logo-icon">Q</span>
+            <span>QuizMaster</span>
+        </div>
+
+        <div class="nav-menu">
+            <a href="/" class="nav-link <%= page === 'home' ? 'active' : ''%> ">Página Inicial</a>
+            <a href="/quiz" class="nav-link <%= page === 'quiz' ? 'active' : ''%> ">Quiz</a>
+            <a href="/questoes" class="nav-link <%= page === 'questoes' ? 'active' : ''%> ">Questões</a>
+            <a href="/questoes/novaQuestao" class="nav-link <%= page === 'criar' ? 'active' : ''%> ">Criar Questões</a>
+            <a href="/questoes/alterarQuestao" class="nav-link <%= page === 'alterar' ? 'active' : ''%> ">Alterar Questões</a>
+            <a href="/questoes/deletarQuestao" class="nav-link <%= page === 'deletar' ? 'active' : ''%> ">Excluir Questões</a>
+        </div>
+    </div>
+</nav>

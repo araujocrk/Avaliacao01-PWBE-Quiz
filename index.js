@@ -16,6 +16,7 @@ const QuestaoRouter = require('./routes/questaoRoutes');
 
 app.use('/questoes', QuestaoRouter);
 
+
 app.listen(port, () => {
     console.log(`Rodando servidor em http://localhost:${port}.`)
 })
