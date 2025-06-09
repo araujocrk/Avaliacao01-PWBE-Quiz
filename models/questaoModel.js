@@ -51,7 +51,7 @@ Questao.prototype.validate = function () {
     }
 
     // Se todos os dados foram validados, substitui os dados formatados em data
-    if (this.errors === 0) {
+    if (this.errors.length === 0) {
         this.data = {
             enunciado,
             alternativaA,
@@ -103,7 +103,7 @@ Questao.prototype.create = function () {
 Questao.listarQuestoes = function () {
     return new Promise((resolve, reject) => {
         const query = `
-        SELECT *
+        SELECT id, enunciado
         FROM questoes 
         ORDER BY id ASC
         `
@@ -112,6 +112,41 @@ Questao.listarQuestoes = function () {
                 reject(error);
             } else {
                 resolve(result.rows);
+            }
+        });
+    });
+};
+
+Questao.prototype.update = function (id) {
+    const query_text = `
+        UPDATE questoes
+        SET 
+            enunciado = $1,
+            alternativaA = $2,
+            alternativaB = $3,
+            alternativaC = $4,
+            alternativaD = $5,
+            alternativaE = $6,
+            correta = $7
+        WHERE id = $8;
+    `
+    const query_params = [
+        this.data.enunciado,
+        this.data.alternativaA,
+        this.data.alternativaB,
+        this.data.alternativaC,
+        this.data.alternativaD,
+        this.data.alternativaE,
+        this.data.correta,
+        id
+    ]
+
+    return new Promise((resolve, reject) => {
+        pool.query(query_text, query_params, (error, result) => {
+            if (error) {
+                reject('Erro ao atualizar questão: ' + error);
+            } else {
+                resolve();
             }
         });
     });

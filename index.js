@@ -12,8 +12,11 @@ app.use(express.static('public'));
 
 app.use(express.urlencoded({ extended: false }));
 
-const QuestaoRouter = require('./routes/questaoRoutes');
+const QuestaoRouter = require('./routes/questaoRoute');
+const MainRoute = require('./routes/mainRoute');
 
+
+app.use('/', MainRoute);
 app.use('/questoes', QuestaoRouter);
 
 

@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuizMaster - <%= title %></title>
+    <title>QuizMaster - <%= title %>
+    </title>
     <link rel="stylesheet" href="/stylesheets/resetEstilosBase.css">
-    <link rel="stylesheet" href="/stylesheets/novaQuestaoForm.css">
     <link rel="stylesheet" href="/stylesheets/nav.css">
     <link rel="stylesheet" href="/stylesheets/erro.css">
 </head>
+
 <body>
-    <% if (showHeader !== false) { %>
+    <% if (showHeader !==false) { %>
         <nav>
             <%- include('partials/nav') %>
         </nav>
-    <% } %>
+        <% } %>
 
-        <%- body %>
-        
+            <%- body %>
+
 </body>
+
 </html>

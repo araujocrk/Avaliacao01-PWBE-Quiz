@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/listaQuestoes.css">
+    <title><%= title %></title>
+</head>
+
+<body>
+    <main class="questoesContainer">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Lista de Questões</h1>
+                <a href="/questoes/novaQuestao" class="action-button">
+                    + Nova Questão
+                </a>
+            </div>
+
+            <table class="questions-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Enunciado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% questoes.forEach((questao) => { %>
+                        <tr>
+                            <td class="question-id"><%= questao.id %></td>
+                            <td class="question-statement"><%= questao.enunciado %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>
