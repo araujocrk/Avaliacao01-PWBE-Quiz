@@ -2,7 +2,7 @@ const Questao = require('../models/questaoModel');
 
 exports.listarQuestoes = async (req, res) => {
     try {
-        const questoes = await Questao.listarQuestoes();
+        const questoes = await Questao.listaQuestoes();
         res.render('pages/listaQuestoes',
             {
                 questoes,
@@ -101,6 +101,34 @@ exports.editarQuestao = async function (req, res) {
         res.redirect('/questoes');
     } catch (error) {
         res.render('pages/error', 
+            {
+                title: 'Erro ao editar',
+                showHeader: false,
+                page: '',
+                erros: [error.message]
+            }
+        );
+    }
+};
+
+exports.deletarQuestaoForm = function (req, res) {
+    res.render('pages/deletarQuestaoForm', 
+        {
+            title: 'Deletar Questão',
+            showHeader: true,
+            page: 'deletar'
+        }
+    );
+};
+
+exports.deletarQuestao = async function (req, res) {
+    const id = req.body.id;
+
+    try {
+        await Questao.deletar(id);
+        res.redirect('/questoes');
+    } catch (error) {
+        return res.render('pages/error', 
             {
                 title: 'Erro ao editar',
                 showHeader: false,

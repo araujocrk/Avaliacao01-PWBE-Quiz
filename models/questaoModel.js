@@ -100,7 +100,7 @@ Questao.prototype.create = function () {
 
 };
 
-Questao.listarQuestoes = function () {
+Questao.listaQuestoes = function () {
     return new Promise((resolve, reject) => {
         const query = `
         SELECT id, enunciado
@@ -145,6 +145,23 @@ Questao.prototype.update = function (id) {
         pool.query(query_text, query_params, (error, result) => {
             if (error) {
                 reject('Erro ao atualizar questão: ' + error);
+            } else {
+                resolve();
+            }
+        });
+    });
+};
+
+Questao.deletar = function (id) {
+    const query = `
+        DELETE 
+        FROM questoes
+        WHERE id = $1;
+    `
+    return new Promise((resolve, reject) => {
+        pool.query(query, [id], (error, result) => {
+            if (error) {
+                reject(error);
             } else {
                 resolve();
             }

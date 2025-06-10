@@ -1,0 +1,40 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/deletarQuestaoForm.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <main class="novaQuestaoForm">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Deletar Questão</h1>
+            </div>
+
+            <form id="questionForm" class="form" action="deletar" method="POST" onsubmit="return confirmarExclusao()">
+                <div class="form-group">
+                    <label for="id">
+                        <span class="form-icon">#</span> ID da Questão
+                    </label>
+                    <input type="number" id="id" name="id" class="idField"
+                        placeholder="Informe o ID da questão a ser deletada" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="submit-btn">
+                        <span class="submit-icon">→</span> Deletar Questão
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+<script>
+    function confirmarExclusao() {
+        return confirm("Tem certeza de que deseja excluir esta questão?");
+    }
+</script>
+
+</html>

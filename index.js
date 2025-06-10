@@ -12,12 +12,14 @@ app.use(express.static('public'));
 
 app.use(express.urlencoded({ extended: false }));
 
-const QuestaoRouter = require('./routes/questaoRoute');
 const MainRoute = require('./routes/mainRoute');
+const QuestaoRoute = require('./routes/questaoRoute');
+const QuizRoute = require('./routes/quizRoute');
 
 
 app.use('/', MainRoute);
-app.use('/questoes', QuestaoRouter);
+app.use('/questoes', QuestaoRoute);
+app.use('/quiz', QuizRoute);
 
 
 app.listen(port, () => {
