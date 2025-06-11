@@ -103,7 +103,7 @@ Questao.prototype.create = function () {
 Questao.listaQuestoes = function () {
     return new Promise((resolve, reject) => {
         const query = `
-        SELECT id, enunciado
+        SELECT id, enunciado, alternativaA, alternativaB, alternativaC, alternativaD, alternativaE, correta
         FROM questoes 
         ORDER BY id ASC
         `

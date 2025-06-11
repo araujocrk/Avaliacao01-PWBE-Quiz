@@ -81,8 +81,14 @@ exports.editarQuestao = async function (req, res) {
     const questao = new Questao(req.body);
     questao.validate();
 
-    if (!id || isNaN(id)) {
+    if (isNaN(id)) {
         questao.errors.push('ID da questão é obrigatório e deve ser um número.');
+    } else if (id < 1) {
+        questao.errors.push('ID da questão não pode ser 0 ou negativo.')
+    }
+
+    if (!Number.isInteger(id)) {
+        questao.errors.push('ID da questão deve ser inteiro.')
     }
 
     if (questao.errors.length > 0) {
@@ -122,7 +128,40 @@ exports.deletarQuestaoForm = function (req, res) {
 };
 
 exports.deletarQuestao = async function (req, res) {
-    const id = req.body.id;
+    const questao = new Questao(req.body);
+    const id = parseInt(req.body.id);
+
+    if (isNaN(id)) {
+        questao.errors.push('ID da questão é obrigatório e deve ser um número.');
+    } else if (id < 1) {
+        questao.errors.push('ID da questão não pode ser 0 ou negativo.')
+    }
+
+    if (!Number.isInteger(id)) {
+        questao.errors.push('ID da questão deve ser inteiro.')
+    }
+
+    if (questao.errors.length > 0) {
+        return res.render('pages/error', 
+            {
+                title: 'Editar Questão',
+                showHeader: false,
+                page: '',
+                erros: questao.errors
+            }
+        );
+    }
+
+    if (questao.errors.length > 0) {
+        return res.render('pages/error', 
+            {
+                title: 'Deletar Questão',
+                showHeader: false,
+                page: '',
+                erros: questao.errors
+            }
+        );
+    }
 
     try {
         await Questao.deletar(id);

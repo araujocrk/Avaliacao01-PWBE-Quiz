@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const session = require('express-session');
 
 app.set('views', 'views');
 app.set('view engine', 'ejs');
@@ -16,6 +17,11 @@ const MainRoute = require('./routes/mainRoute');
 const QuestaoRoute = require('./routes/questaoRoute');
 const QuizRoute = require('./routes/quizRoute');
 
+app.use(session({
+    secret: 'quizseguro',
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.use('/', MainRoute);
 app.use('/questoes', QuestaoRoute);
