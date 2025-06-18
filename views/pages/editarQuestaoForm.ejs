@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/editarQuestaoForm.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <main class="novaQuestaoForm">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Editar Questão</h1>
+            </div>
+
+            <form id="questionForm" class="form" action="editar" method="POST">
+                <div class="form-group">
+                    <label for="id">
+                        <span class="form-icon">#</span> ID da Questão
+                    </label>
+                    <input type="number" id="id" name="id" class="idField" placeholder="Digite o ID" required>
+                </div>
+
+                <!-- Question Statement -->
+                <div class="form-group">
+                    <label for="enunciado">
+                        <span class="form-icon">?</span> Enunciado da Questão
+                    </label>
+                    <textarea id="enunciado" name="enunciado" placeholder="Digite o enunciado da questão aqui..."
+                        required></textarea>
+                </div>
+
+                <!-- Options -->
+                <div class="form-group">
+                    <div class="option-group">
+                        <label for="alternativa_a" class="option-label">
+                            <span class="option-letter A">A</span> Alternativa A
+                        </label>
+                        <input type="text" id="alternativa_a" name="alternativa_a" placeholder="Digite a alternativa A"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="option-group">
+                        <label for="alternativa_b" class="option-label">
+                            <span class="option-letter B">B</span> Alternativa B
+                        </label>
+                        <input type="text" id="alternativa_b" name="alternativa_b" placeholder="Digite a alternativa B"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="option-group">
+                        <label for="alternativa_c" class="option-label">
+                            <span class="option-letter C">C</span> Alternativa C
+                        </label>
+                        <input type="text" id="alternativa_c" name="alternativa_c" placeholder="Digite a alternativa C"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="option-group">
+                        <label for="alternativa_d" class="option-label">
+                            <span class="option-letter D">D</span> Alternativa D
+                        </label>
+                        <input type="text" id="alternativa_d" name="alternativa_d" placeholder="Digite a alternativa D"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="option-group">
+                        <label for="alternativa_e" class="option-label">
+                            <span class="option-letter E">E</span> Alternativa E
+                        </label>
+                        <input type="text" id="alternativa_e" name="alternativa_e" placeholder="Digite a alternativa E"
+                            required>
+                    </div>
+                </div>
+
+                <!-- Correct Answer -->
+                <div class="form-group">
+                    <label>
+                        <span class="form-icon">✓</span> Resposta Correta
+                    </label>
+
+                    <div class="options-grid">
+                        <div>
+                            <input type="radio" id="correctA" name="correta" value="A" class="option-radio" required>
+                            <label for="correctA" class="option-label-radio A">
+                                <span class="option-letter-radio">A</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="correctB" name="correta" value="B" class="option-radio">
+                            <label for="correctB" class="option-label-radio B">
+                                <span class="option-letter-radio">B</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="correctC" name="correta" value="C" class="option-radio">
+                            <label for="correctC" class="option-label-radio C">
+                                <span class="option-letter-radio">C</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="correctD" name="correta" value="D" class="option-radio">
+                            <label for="correctD" class="option-label-radio D">
+                                <span class="option-letter-radio">D</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="correctE" name="correta" value="E" class="option-radio">
+                            <label for="correctE" class="option-label-radio E">
+                                <span class="option-letter-radio">E</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit" class="submit-btn" onclick="">
+                        <span class="submit-icon">→</span> Editar Questão
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

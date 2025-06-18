@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/stylesheets/quizResposta.css"/>
+    
+</head>
+
+<body>
+    <main>
+        <h2>
+            <%= questao.data.enunciado %>
+        </h2>
+        <div class="alternativas">
+            <% ['A', 'B', 'C' , 'D' , 'E' ].forEach(function (letra) {%>
+                <% let optionClass='' ; %>
+                <% if (respostaUsuario===letra && letra===questao.data.correta) { %>
+                    <% optionClass='correct' ; } else if (respostaUsuario===letra && letra!==questao.correta) { %>
+                        <% optionClass='incorrect' ; %>
+                    <% } else if (letra===questao.correta) {optionClass='correct' ; } %>
+                <div class="quiz-option <%= optionClass %>">
+                    <span>
+                        <%= letra %>) <%= questao.data['alternativa_' + letra.toLowerCase()] %>
+                    </span>
+                </div>
+                <% }) %>
+        </div>
+
+        <div class="stats">
+            <p>Respondidas: <%= stats.totalRespondidas %>
+            </p>
+            <p>Acertos: <%= stats.acertos %>
+            </p>
+            <p>Erros: <%= stats.erros %>
+            </p>
+        </div>
+
+        <div class="actions">
+            <button class="submitBtn" onclick="window.location.href='/quiz/jogar'">Continuar</button>
+            <button class="submitBtn secondary" onclick="window.location.href='/quiz/encerrar'">Encerrar</button>
+        </div>
+    </main>
+</body>
+
+</html>

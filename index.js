@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const session = require('express-session');
 
 app.set('views', 'views');
 app.set('view engine', 'ejs');
@@ -12,9 +13,20 @@ app.use(express.static('public'));
 
 app.use(express.urlencoded({ extended: false }));
 
-const QuestaoRouter = require('./routes/questaoRoutes');
+const MainRoute = require('./routes/mainRoute');
+const QuestaoRoute = require('./routes/questaoRoute');
+const QuizRoute = require('./routes/quizRoute');
 
-app.use('/questoes', QuestaoRouter);
+app.use(session({
+    secret: 'quizseguro',
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use('/', MainRoute);
+app.use('/questoes', QuestaoRoute);
+app.use('/quiz', QuizRoute);
+
 
 app.listen(port, () => {
     console.log(`Rodando servidor em http://localhost:${port}.`)

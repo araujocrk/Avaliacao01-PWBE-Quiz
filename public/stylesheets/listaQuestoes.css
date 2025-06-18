@@ -1,0 +1,139 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f9fafb;
+    margin: 0;
+    padding: 0;
+    color: #1f2937;
+}
+
+.questoesContainer {
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 24px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Questions table styles */
+.questions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.questions-table thead th {
+    text-align: left;
+    padding: 12px 16px;
+    background-color: #f3f4f6;
+    color: #374151;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.questions-table tbody td {
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+}
+
+.questions-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.questions-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.question-id {
+    font-weight: 600;
+    color: #3b82f6;
+    width: 80px;
+}
+
+.question-statement {
+    color: #1f2937;
+    line-height: 1.5;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .nav-menu {
+        gap: 10px;
+        font-size: 0.75rem;
+    }
+
+    .questions-table thead {
+        display: none;
+    }
+
+    .questions-table tbody tr {
+        display: block;
+        margin-bottom: 20px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+    }
+
+    .questions-table tbody td {
+        display: block;
+        border-bottom: 1px solid #e5e7eb;
+        padding: 12px;
+    }
+
+    .questions-table tbody td:last-child {
+        border-bottom: none;
+    }
+
+    .question-id,
+    .question-statement {
+        display: inline;
+        width: auto;
+    }
+
+    .question-id::after {
+        content: ": ";
+        margin-right: 8px;
+    }
+}

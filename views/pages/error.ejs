@@ -1,0 +1,20 @@
+<main class="error">
+    <div class="error-container">
+        <!-- Ícone de erro usando HTML Entities (✖) -->
+        <div class="error-icon">✖</div>
+
+        <h1>Ocorreu um Erro</h1>
+
+        <div class="error-message">
+
+            <% erros.forEach(function(erro) { %>
+                <p>
+                    <%= erro %>
+                </p>
+                <% }) %>
+
+                    <div class="actions">
+                        <a href="/" class="btn">Página Inicial</a>
+                    </div>
+        </div>
+</main>

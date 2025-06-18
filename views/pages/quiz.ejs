@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/quiz.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <main>
+        <div class="quiz-container">
+            <form action="resultado" method="post">
+                <input type="hidden" name="id" value="<%= questao.data.id %>">
+                <h2 class="quiz-question"><%= questao.data.id %>. <%= questao.data.enunciado %></h2>
+
+                <% ['A', 'B', 'C', 'D', 'E'].forEach(function (letra) { %>
+                    <label class="quiz-option">
+                        <input type="radio" name="resposta" value="<%= letra %>" required>
+                        <span class="option-text"><%= letra %>) <%= questao.data['alternativa_' + letra.toLowerCase()] %></span>
+                    </label>
+                <% }) %>
+
+                <button type="submit" class="submitBtn">Responder</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
